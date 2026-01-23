@@ -1,0 +1,207 @@
+%\documentclass[10pt,conference]{IEEEtran}
+\documentclass[manuscript,review,dvipsnames]{acmart}%,anonymous
+
+\newcommand{\papertitle}{Too Many Issues: Automatically Prioritizing Analyzer Findings by Tracing Security Importance}
+%Too Many Issues: Automatically Prioritizing Security Issues by Tracing Importance for the Project
+
+% TODO: to show the authors, you can uncomment
+%\newcommand\showAuthors{0}
+
+%\IEEEoverridecommandlockouts
+%\usepackage{fourier}
+\usepackage[utf8]{inputenc}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{refstyle}
+\usepackage{listings}
+\lstset{numbers=left,
+numberstyle=\tiny,
+numbersep=5pt,
+xleftmargin=10pt%\parindent
+}
+\usepackage{float}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{subcaption}
+\usepackage[linesnumbered,ruled]{algorithm2e}
+%\usepackage[hyphens]{url}
+\usepackage{booktabs}
+\usepackage[textsize=footnotesize]{todonotes}
+\usepackage{footmisc} % For footnote references (in the list of authors)
+\usepackage{balance}
+%\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle=\papertitle}
+\usepackage{csquotes}
+
+
+\renewcommand{\algorithmautorefname}{Algorithm}
+\renewcommand{\sectionautorefname}{Sec.}
+\renewcommand{\subsectionautorefname}{Sec.}
+\renewcommand{\figureautorefname}{Fig.}
+
+\definecolor{red}{rgb}{1,0,0}
+\newcommand{\appr}{\emph{Trace\-SEC}}
+
+\usepackage{subcaption}
+
+\usepackage{ifthen}
+\usepackage{xparse}
+\usepackage{calculator}
+\usepackage{colortbl}
+\newcommand\rcolor[1]{
+    \ifthenelse{\lengthtest{#1pt < -10pt} }{\cellcolor{Red}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < -8pt} }{\cellcolor{Red!75}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < -6pt} }{\cellcolor{BurntOrange!75}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < -4pt} }{\cellcolor{YellowOrange!75}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < -2pt} }{\cellcolor{Goldenrod!85}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < -1pt} }{\cellcolor{Yellow!85}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < 1pt} }{\cellcolor{Yellow!40}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < 2pt} }{\cellcolor{ForestGreen!17}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < 4pt} }{\cellcolor{ForestGreen!33}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < 6pt} }{\cellcolor{ForestGreen!50}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < 8pt} }{\cellcolor{ForestGreen!67}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < 10pt} }{\cellcolor{ForestGreen!83}#1\%}{
+    {\cellcolor{ForestGreen!100}#1\%}{\cellcolor{ForestGreen!100}#1\%}
+    }}}}}}}}}}}}
+}
+
+%%
+%% \BibTeX command to typeset BibTeX logo in the docs
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
+
+\newcommand{\edit}[1]{\textcolor{blue}{{#1}}}
+
+\acmJournal{TOSEM}
+%\setcopyright{acmcopyright}
+%\copyrightyear{2018}
+%\acmYear{2018}
+%\acmDOI{XXXXXXX.XXXXXXX}
+%\acmPrice{15.00}
+%\acmISBN{978-1-4503-XXXX-X/18/06}
+
+
+\begin{document}
+
+\title[\papertitle]{\papertitle}
+
+\author[S. Peldszus]{Sven Peldszus}
+\orcid{0000-0002-2604-0487}
+\affiliation{%
+  \institution{Ruhr University Bochum}
+  \city{Bochum}
+  \country{Germany}
+}
+\email{sven.peldszus@rub.de}
+
+\author[K. Großer]{Katharina Großer}
+%\authornotemark[1]
+\orcid{0000-0003-4532-0270}
+\affiliation{%
+  \institution{University of Koblenz}
+  \city{Koblenz}
+  \country{Germany}
+}
+\email{grosser@uni-koblenz.de}
+
+\author[M. Konersmann]{Marco Konersmann}
+%\authornotemark[1]
+\orcid{0003-3452-57722}
+\affiliation{%
+ \institution{RWTH Aachen University}
+ \city{Aachen}
+ \country{Germany}
+}
+
+\author[W. Brunotte]{Wasja Brunotte}
+%\authornote{The three authors contributed equally to the paper}
+\orcid{0000-0003-4127-6508}
+%\affiliation{%
+%  \institution{Leibniz University Hannover}
+%  \city{Hannover}
+%  \country{Germany}
+%}
+
+
+\author[M. Ahrens]{Maike Ahrens}
+\orcid{0000-0002-9577-0598}
+
+\author[K. Schneider]{Kurt Schneider}
+\orcid{0000-0002-7456-8323}
+\email{kurt.schneider@inf.uni-hannover.de}
+\affiliation{%
+  \institution{Leibniz University Hannover}
+  \city{Hannover}
+  \country{Germany}
+}
+%\email{maike.ahrens@inf.uni-hannover.de}
+
+\author[J. Jürjens]{Jan Jürjens}
+\orcid{0000-0002-8938-0470}
+\affiliation{%
+  \institution{University of Koblenz}
+  \city{Koblenz}
+  \country{Germany}
+}
+\additionalaffiliation{%
+  \institution{Fraunhofer Institute for Software and Systems Engineering (ISST)}
+  \city{Dortmund}
+  \country{Germany}
+}
+\email{juerjens@uni-koblenz.de}
+
+%\renewcommand[1]{\shortauthors}{Sven Peldszus, Katharina Großer, Marco Konersmann, Wasja Brunotte, et al.}
+
+%
+\input{content/00abstract}
+
+%%
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+\maketitle
+
+%for IEEE authors
+%\ifx\showAuthors\undefined
+%\else % Only show this footnote, when the authors are shown.
+%\begingroup\renewcommand\thefootnote{\textsection}
+%\footnotetext{These three authors contributed equally to the paper.}
+%\endgroup
+%\fi
+
+\input{content/01introduction}
+\input{content/02background}
+\input{content/03approach}
+\input{content/04eval}
+\input{content/05threats}
+\input{content/06relatedwork}
+\input{content/07conclusion}
+
+
+
+%%
+%% The acknowledgments section is defined using the "acks" environment
+%% (and NOT an unnumbered section). This ensures the proper
+%% identification of the section in the article metadata, and the
+%% consistent spelling of the heading.
+%\section*{Acknowledgment}
+%Lorem ipsum
+
+\balance
+%%
+%% The next two lines define the bibliography style to be used, and
+%% the bibliography file.
+%\section*{References}
+\todo[color=green]{R3: References "GROSSER" should be "GROßER" A:~issue by automated smallcaps style (even correct and there was no uppercase ß in German alphabet til then) - same for title page}
+\todo[color=green]{R3: \cite{CWA.DSFA.A8} document is taken down}
+\bibliographystyle{acm}
+\bibliography{IEEEabrv,bibliograhpy/bibliography}
+
+
+
+\end{document}
+%\endinput

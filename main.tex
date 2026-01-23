@@ -1,0 +1,242 @@
+\DocumentMetadata{}
+\documentclass[acmsmall,screen,review,anonymous,authoryear]{acmart}
+
+\newcommand{\papertitle}{Study of Trace Links}
+
+\usepackage[utf8]{inputenc}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{caption}
+\usepackage{refstyle}
+\usepackage{listings}
+\lstset{numbers=left,
+numberstyle=\tiny,
+numbersep=5pt,
+xleftmargin=10pt%\parindent
+}
+\usepackage{float}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{subcaption}
+\usepackage[linesnumbered,ruled]{algorithm2e}
+%\usepackage[hyphens]{url}
+\usepackage{booktabs}
+%\usepackage[textsize=footnotesize]{todonotes}
+\usepackage{footmisc} % For footnote references (in the list of authors)
+\usepackage{balance}
+\usepackage{csquotes}
+
+
+\renewcommand{\algorithmautorefname}{Algorithm}
+\renewcommand{\sectionautorefname}{Sec.}
+\renewcommand{\subsectionautorefname}{Sec.}
+\renewcommand{\figureautorefname}{Fig.}
+
+\definecolor{red}{rgb}{1,0,0}
+\newcommand{\appr}{\emph{Trace\-SEC}}
+\newcommand{\todo}[1]{\textcolor{blue}{\textbf{TODO:} #1}}
+
+\usepackage{subcaption}
+
+\usepackage{ifthen}
+\usepackage{xparse}
+\usepackage{calculator}
+\usepackage{colortbl}
+\newcommand\rcolor[1]{
+    \ifthenelse{\lengthtest{#1pt < -10pt} }{\cellcolor{Red}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < -8pt} }{\cellcolor{Red!75}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < -6pt} }{\cellcolor{BurntOrange!75}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < -4pt} }{\cellcolor{YellowOrange!75}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < -2pt} }{\cellcolor{Goldenrod!85}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < -1pt} }{\cellcolor{Yellow!85}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < 1pt} }{\cellcolor{Yellow!40}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < 2pt} }{\cellcolor{ForestGreen!17}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < 4pt} }{\cellcolor{ForestGreen!33}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < 6pt} }{\cellcolor{ForestGreen!50}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < 8pt} }{\cellcolor{ForestGreen!67}#1\%}{
+    \ifthenelse{\lengthtest{#1pt < 10pt} }{\cellcolor{ForestGreen!83}#1\%}{
+    {\cellcolor{ForestGreen!100}#1\%}{\cellcolor{ForestGreen!100}#1\%}
+    }}}}}}}}}}}}
+}
+
+%%
+%% \BibTeX command to typeset BibTeX logo in the docs
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
+
+%\newcommand{\edit}[1]{\textcolor{blue}{{#1}}}
+\newcommand{\edit}[1]{#1}
+
+%% Rights management information.  This information is sent to you
+%% when you complete the rights form.  These commands have SAMPLE
+%% values in them; it is your responsibility as an author to replace
+%% the commands and values with those provided to you when you
+%% complete the rights form.
+\setcopyright{acmlicensed}
+\copyrightyear{2018}
+\acmYear{2018}
+\acmDOI{XXXXXXX.XXXXXXX}
+%% These commands are for a PROCEEDINGS abstract or paper.
+\acmConference[Conference acronym 'XX]{Make sure to enter the correct
+	conference title from your rights confirmation email}{June 03--05,
+	2018}{Woodstock, NY}
+%%
+%%  Uncomment \acmBooktitle if the title of the proceedings is different
+%%  from ``Proceedings of ...''!
+%%
+%%\acmBooktitle{Woodstock '18: ACM Symposium on Neural Gaze Detection,
+	%%  June 03--05, 2018, Woodstock, NY}
+\acmISBN{978-1-4503-XXXX-X/2018/06}
+
+
+\begin{document}
+
+\title[\papertitle]{\papertitle}
+
+\author[S. Peldszus]{Sven Peldszus}
+\orcid{0000-0002-2604-0487}
+\affiliation{%
+  \institution{Ruhr University Bochum}
+  \city{Bochum}
+  \country{Germany}
+}
+\email{sven.peldszus@rub.de}
+
+\author[K. Großer]{Katharina Großer}
+\orcid{0000-0003-4532-0270}
+\affiliation{%
+  \institution{University of Koblenz}
+  \city{Koblenz}
+  \country{Germany}
+}
+\email{grosser@uni-koblenz.de}
+
+\author[M. Konersmann]{Marco Konersmann}
+\orcid{0003-3452-57722}
+\affiliation{%
+ \institution{ista SE}
+ \city{Essen}
+ \country{Germany}
+}
+
+\author[W. Brunotte]{Wasja Brunotte}
+\orcid{0000-0003-4127-6508}
+%\affiliation{%
+%  \institution{Leibniz University Hannover}
+%  \city{Hannover}
+%  \country{Germany}
+%}
+
+
+\author[M. Ahrens]{Maike Ahrens}
+\orcid{0000-0002-9577-0598}
+%\email{maike.ahrens@inf.uni-hannover.de}
+
+\author[K. Schneider]{Kurt Schneider}
+\orcid{0000-0002-7456-8323}
+\email{kurt.schneider@inf.uni-hannover.de}
+\affiliation{%
+  \institution{Leibniz University Hannover}
+  \city{Hannover}
+  \country{Germany}
+}
+
+\author[J. Jürjens]{Jan Jürjens}
+\orcid{0000-0002-8938-0470}
+\affiliation{%
+  \institution{University of Koblenz}
+  \city{Koblenz}
+  \country{Germany}
+}
+\affiliation{%
+	\institution{Fraunhofer Institute for Software and Systems Engineering (ISST)}
+	\city{Dortmund}
+	\country{Germany}
+}
+%\additionalaffiliation{%
+%  \institution{Fraunhofer Institute for Software and Systems Engineering (ISST)}
+%  \city{Dortmund}
+%  \country{Germany}
+%}
+\email{juerjens@uni-koblenz.de}
+
+%\renewcommand[1]{\shortauthors}{Sven Peldszus, Katharina Großer, Marco Konersmann, Wasja Brunotte, et al.}
+
+%
+\begin{abstract}
+	Trace links are important building block in security engineering.
+	In software projects we have different kinds of trace links, external trace links that connect different artifacts, and internal trace links within an artifact that express dependencies between elements of the system.
+	These trace links support the security engineering by providing a rationale to developers and can even be leveraged to automatically perform security tasks, such as prioritizing issues according to their security impact on the project.
+	However, it is unclear what are the characteristics of good trace links, i.e., which ones carry the most security-related information.
+\end{abstract}
+
+%CCS Concepts https://dl.acm.org/ccs#
+\begin{CCSXML}
+	<ccs2012>
+	<concept>
+	<concept_id>10011007.10011006</concept_id>
+	<concept_desc>Software and its engineering~Software notations and tools</concept_desc>
+	<concept_significance>500</concept_significance>
+	</concept>
+	<concept>
+	<concept_id>10002978.10002986</concept_id>
+	<concept_desc>Security and privacy~Formal methods and theory of security</concept_desc>
+	<concept_significance>500</concept_significance>
+	</concept>
+	<concept>
+	<concept_id>10002978.10003006</concept_id>
+	<concept_desc>Security and privacy~Systems security</concept_desc>
+	<concept_significance>500</concept_significance>
+	</concept>
+	<concept>
+	<concept_id>10011007.10011074</concept_id>
+	<concept_desc>Software and its engineering~Software creation and management</concept_desc>
+	<concept_significance>300</concept_significance>
+	</concept>
+	</ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Software and its engineering~Software notations and tools}
+\ccsdesc[500]{Security and privacy~Formal methods and theory of security}
+\ccsdesc[500]{Security and privacy~Systems security}
+\ccsdesc[300]{Software and its engineering~Software creation and management}
+
+%%
+%% Keywords. The author(s) should pick words that accurately describe
+%% the work being presented. Separate the keywords with commas.
+\keywords{static code analysis, security issues, traceability, issue prioritization}
+
+%\begin{IEEEkeywords}
+%static code analysis, security issues, traceability, issue prioritization
+%\end{IEEEkeywords}
+
+
+\maketitle
+
+\input{content/01introduction}
+\input{content/02background}
+\input{content/03approach}
+\input{content/04threats}
+\input{content/05relatedwork}
+\input{content/06conclusion}
+
+
+
+%%
+%% The acknowledgments section is defined using the "acks" environment
+%% (and NOT an unnumbered section). This ensures the proper
+%% identification of the section in the article metadata, and the
+%% consistent spelling of the heading.
+%\section*{Acknowledgment}
+%This work was partially supported by the Deutsche Forschungsgemeinschaft (DFG) under Grant No.: 500462081, project TraceSEC -- Tracing and Explaining Security in Software Engineering.
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{bibliograhpy/bibliography}
+
+
+
+\end{document}
+%\endinput
